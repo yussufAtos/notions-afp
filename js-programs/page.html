@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+ <meta charset="UTF-8" />
+<script src="script-test.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <!-- <div></div> -->
+
+<!--  <button> trigger mousein </button> -->
+
+<!-- <span>
+	<div></div>
+</span> -->
+
+<!-- <form>
+	<input type="text">
+	<button> submit </button>
+</form> -->
+
+<!-- <div>
+    <p><button>Cible</button></p>
+</div> -->
+
+<!--   <div class="loader"></div>
+  <div id="timer"></div>
+  <div id="app"></div> -->
+
+<!--  L'objet FormData -->
+
+<form id="monForm">
+  <input type="text" name="prenom" value="Paul">
+  <input type="file" name="fichier">
+  <input type="submit">
+</form>
+
+<div id="myhash"></div>
+
+    <script>
+ //*******************************Les événements ***********************************//
+     
+      //const sq =document.querySelector("div");
+      // sq.onmouseover=()=>{
+      // console.log("HELLO");
+       //     }
+    
+ //*** La méthode addEventListener()
+     
+// sq.addEventListener('mouseover',()=>{sq.style.with='300px';
+// 	                                 sq.style.height='300px';   
+//                                       })    
+// sq.addEventListener('mouseout',()=>{sq.style.backgroundColor='red'})
+// sq.addEventListener('mouseout',()=>{sq.style.with='200px';
+// 	                                 sq.style.height='200px'; })
+
+ //with options
+    
+//sq.addEventListener('mouseout',()=>{sq.style.backgroundColor='red'},{once:true})
+
+
+//***** Supprimer un gestionnaire d'événement et déclencher un événement
+
+// function beRed() {
+// sq.style.backgroundColor='red';
+// }
+
+//or
+
+// const  beRed=()=>{
+// sq.style.backgroundColor='red';
+// }
+
+ //sq.addEventListener('mouseover',beRed)   
+// sq.addEventListener('mouseout',()=>{sq.style.backgroundColor='green';
+//                                     sq.removeEventListener('mouseover',beRed)
+//                                     })
+
+//*****dispatchEvent
+
+// const btn =document.querySelector("button");
+// btn.addEventListener("click", () => {
+//   sq.dispatchEvent(new Event('mouseover') );
+// });
+
+//*****Le bouillonnement et la capture
+
+ // const sq =document.querySelector("div");
+ // const sp =document.querySelector("span");
+
+ //1  click div ==> click span
+
+//  sq.addEventListener("click", () => {
+//  console.log("click div ");
+// });
+
+//   sp.addEventListener("click", () => {
+//  console.log("click span ");
+// });
+
+   //2  click span ==> click div
+
+//  sq.addEventListener("click", () => {
+//  console.log("click div ");
+// },{capture:true});
+//  sp.addEventListener("click", () => {
+//  console.log("click span ");
+// },{capture:true});
+
+//**** objet event
+
+  // const form =document.querySelector("form");
+  // const input =document.querySelector("input");
+
+  // form.addEventListener("submit", (event) => {
+  //         console.log("event : ==> "+JSON.stringify(event));
+  //           event.preventDefault();
+  //   });
+  // input.addEventListener("keydown", (event) => {
+  //   console.log("event : ==> "+JSON.stringify(event));
+        
+  //   });
+
+  //****stopPropagation
+
+ //exemple 1
+
+  // const form =document.querySelector("form");
+  // const input =document.querySelector("input");
+ //  form.addEventListener("click", (event) => {
+ //    console.log("click form");
+ //    });
+ //  input.addEventListener("click", (event) => {
+ //    console.log("click input");
+ //     event.stopPropagation();
+ // });
+
+//exemple 2
+
+    //   const div = document.querySelector("div");
+    //   const paragraphe = document.querySelector("p");
+    //   const bouton = document.querySelector("button");
+
+    // bouton.addEventListener("click", function(e) {
+    //     console.log("Target bouton :", e.target);
+    //     console.log("This bouton :", this);
+    //     div.append("Le bouton : élément le plus imbriqué > ");
+    //     e.stopPropagation(); // On arrête la propagation !
+    //   });
+    //   paragraphe.addEventListener("click", function(e) {
+    //     console.log("Target paragraphe :", e.target);
+    //     console.log("This paragraphe :", this);
+    //     div.append("Le paragraphe : élément au mileu > ");
+    //   });
+    //   div.addEventListener("click", function(e) {
+    //     console.log("Target div :", e.target);
+    //     console.log("Paragraphe div :", this);
+    //     div.append("La div : élément parent des autres");
+    //   });
+
+
+//***** L'objet FormData
+
+// const form =document.querySelector('form')
+// form.addEventListener("submit",(event) =>{
+
+//  event.preventDefault();
+//  const formaData=new FormData(form);
+//  console.log("formaData : ",formaData);
+
+// for(let paire of formaData){
+// console.log("paire : ",paire);
+// }
+// fetch("/test",{method:'POST',body:formaData});
+
+// });
+
+//***** XMLHttpRequest upload
+
+// const requete = new XMLHttpRequest();
+// const form =document.querySelector('form')
+// form.addEventListener("submit",(event) =>{
+// event.preventDefault();
+//  const formaData=new FormData(form);
+//  requete.open("POST",'http://localhost:9090/uploadFile');
+
+// requete.upload.addEventListener("loadstart",(event) =>{
+// console.log("loadstart : ");
+// });
+
+// requete.upload.addEventListener("progress",(event) =>{
+// console.log("progress : ");
+// });
+
+// requete.upload.addEventListener("loadend",(event) =>{
+// console.log("loadend : ");
+// });
+
+// requete.upload.addEventListener("error",(event) =>{
+// console.log("error : ");
+// });
+
+// requete.send(formaData);
+
+// });
+</script>
+</body>
+</html>

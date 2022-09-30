@@ -1,0 +1,130 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Consolas;}}
+{\colortbl ;\red0\green77\blue187;\red127\green0\blue85;\red0\green0\blue0;\red0\green0\blue192;\red100\green100\blue100;\red63\green127\blue95;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\b\f0\fs24\lang12 Un thread est une unit\'e9 d'ex\'e9cution faisant partie d'un programme. Cette unit\'e9 fonctionne de fa\'e7on autonome et parall\'e8lement \'e0 d'autres threads. Le principal avantage des threads est de pouvoir r\'e9partir diff\'e9rents traitements d'un m\'eame programme en plusieurs unit\'e9s distinctes pour permettre leurs ex\'e9cutions "simultan\'e9es".\par
+Sur une machine multiprocesseur, le syst\'e8me d'exploitation peut r\'e9partir l'ex\'e9cution sur plusieurs coeurs, ce qui peut effectivement permettre de r\'e9aliser des traitements en parall\'e8le.\par
+La classe java.lang.Thread et l'interface java.lang.Runnable sont les bases pour le d\'e9veloppement des threads en java.\par
+Un thread requiert des ressources pour s'ex\'e9cuter notamment un espace m\'e9moire nomm\'e9 pile.Il est donc n\'e9cessaire de contr\'f4ler le nombre de threads qui sont lanc\'e9s dans une m\'eame JVM.\par
+\cf1\ul  Le cycle de vie d'un thread\cf0\par
+\ulnone Un thread, encapsul\'e9 dans une instance de type classe Thread, suit un cycle de vie qui peut prendre diff\'e9rents \'e9tats.Le statut du thread est encapsul\'e9 dans l'\'e9num\'e9ration Thread.State.\par
+Le statut du thread correspond \'e0 celui g\'e9r\'e9 par la JVM : il ne correspond pas au statut du thread sous-jacent dans le syst\'e8me d'exploitation.\par
+- NEW  : \par
+Le thread n'est pas encore d\'e9marr\'e9. Aucune ressource syst\'e8me ne lui est encore affect\'e9e. Seules les m\'e9thodes de changement de statut du thread start() et stop() peuvent \'eatre invoqu\'e9es.\par
+- RUNNABLE : \par
+Le thread est en cours d'ex\'e9cution : sa m\'e9thode start() a \'e9t\'e9 invoqu\'e9e.\par
+- BLOCKED : \par
+Le thread est en attente de l'obtention d'un moniteur qui est d\'e9j\'e0 d\'e9tenu par un autre thread.\par
+- WAITING : \par
+Le thread est en attente d'une action d'un autre thread ou que la dur\'e9e pr\'e9cis\'e9e en param\'e8tre de la m\'e9thode sleep() soit atteinte.\par
+Chaque situation d'attente ne poss\'e8de qu'une seule condition pour retourner au statut Runnable :\par
+   - si la m\'e9thode sleep() a \'e9t\'e9 invoqu\'e9e alors le thread ne retournera \'e0 l'\'e9tat Runnable que lorsque le d\'e9lai pr\'e9cis\'e9 en param\'e8tre de la m\'e9thode a \'e9t\'e9 atteint.\par
+   - si la m\'e9thode wait() d'un objet a \'e9t\'e9 invoqu\'e9e alors le thread ne retournera \'e0 l'\'e9tat Runnable que lorsque la m\'e9thode notify() ou notifyAll() de l'objet sera invoqu\'e9e.\par
+   - si la m\'e9thode suspend() a \'e9t\'e9 invoqu\'e9e alors le thread ne retournera \'e0 l'\'e9tat Runnable que lorsque la m\'e9thode resume sera invoqu\'e9e.\par
+   - si le thread est en attente \'e0 cause d'un acc\'e8s I/O alors le thread ne retournera \'e0 l'\'e9tat Runnable que lorsque cet acc\'e8s sera termin\'e9.\par
+- TERMINATED :\par
+
+\pard\sl276\slmult1 Le thread a termin\'e9 son ex\'e9cution. La fin d'un thread peut survenir de deux mani\'e8res :\par
+
+\pard\sa200\sl276\slmult1    - La fin des traitements est atteinte.\par
+   - Une exception est lev\'e9e durant l'ex\'e9cution de ses traitements.\par
+\cf1\ul La cr\'e9ation d'un thread\cf0\ulnone\par
+ 1- cr\'e9er une instance d'une classe anonyme de type Thread et impl\'e9menter sa m\'e9thode run(). Il suffit alors d'invoquer sa m\'e9thode start() pour d\'e9marrer le thread\par
+ 2 -cr\'e9er une classe fille qui h\'e9rite de la classe Thread. Il suffit alors de cr\'e9er une instance de la classe fille et d'invoquer sa m\'e9thode start() pour d\'e9marrer le thread.\par
+3- cr\'e9er une classe qui impl\'e9mente l'interface Runnable. Pour lancer l'ex\'e9cution, il faut cr\'e9er un nouveau Thread en lui passant en param\'e8tre une instance de la classe et invoquer sa m\'e9thode start().\par
+4 - \'e0 partir de Java 8, il est possible d'utiliser une expression lambda pour d\'e9finir l'impl\'e9mentation de l'interface Runnable.\par
+Il est pr\'e9f\'e9rable d'utiliser l'impl\'e9mentation de Runnable car :\par
+    - elle permet \'e0 la classe d'h\'e9riter au besoin d'une classe m\'e8re.\par
+    - elle permet une meilleure s\'e9paration des r\'f4les.\par
+    - elle \'e9vite des erreurs car il suffit simplement d'impl\'e9menter la m\'e9thode run().\par
+\par
+\cf1\ul Arreter un Thread\cf0\ulnone\par
+Pour permettre une interruption des traitements d'un thread, il faut \'e9crire du code qui utilise une boucle tant qu'une condition est remplie : le plus simple est d'utiliser un bool\'e9en.\par
+Le Java Memory Model permet \'e0 un thread de conserver une copie local de ses champs : pour une ex\'e9cution correcte, il faut utiliser le mot cl\'e9 volatile sur le bool\'e9en pour garantir que l'acc\'e8s \'e0 la valeur se fera de et vers la m\'e9moire.\par
+\cf2\ul\f1\fs20 p\ulnone ublic\cf3\b0  \cf2\b class\cf3\b0  \ul MonThread\ulnone  \cf2\b extends\cf3\b0  Thread \{\cf0\par
+\par
+\cf3   \cf2\b private\cf3\b0  \cf2\b volatile\cf3\b0  \cf2\b boolean\cf3\b0  \cf4 running\cf3  = \cf2\b true\cf3\b0 ;\cf0\par
+\par
+\cf3   \cf2\b public\cf3\b0  \cf2\b void\cf3\b0  arreter() \{\cf0\par
+\cf3     \cf2\b this\cf3\b0 .\cf4 running\cf3  = \cf2\b false\cf3\b0 ;\cf0\par
+\cf3   \}\cf0\par
+\par
+\cf3   \cf5 @\cf3 Override\cf0\par
+\cf3   \cf2\b public\cf3\b0  \cf2\b void\cf3\b0  run() \{\cf0\par
+\cf3     \cf2\b while\cf3\b0  (running) \{\cf0\par
+\cf3       \cf6 // \ul traitement\ulnone  \ul du\ulnone  thread\cf0\par
+\cf3       \cf2\b try\cf3\b0  \{\cf0\par
+\cf3         Thread.sleep(500);\cf0\par
+\cf3       \} \cf2\b catch\cf3\b0  (InterruptedException ex) \{\cf0\par
+\cf3         ex.printStackTrace();\cf0\par
+\cf3       \}\cf0\par
+\cf3     \}\cf0\par
+\cf3   \ul\}\par
+\cf1\b\f0\fs24\lang1036 Information sur un Thread\cf0\ulnone\lang12\par
+Plusieurs m\'e9thodes de la classe Thread permettent d'obtenir des informations sur le thread.\par
+- Thread.currentThread().getName() :\par
+La m\'e9thode statique qui permet d'obtenir le thread dans lequel le code s'ex\'e9cute.\par
+- boolean isAlive() :\par
+Renvoyer un bool\'e9en qui pr\'e9cise si le thread est en cours d'ex\'e9cution. Elle renvoie true tant que le thread a \'e9t\'e9 d\'e9marr\'e9 et qu'il n'est pas arr\'eat\'e9\par
+- Thread.State getState() :\par
+Renvoyer le statut du thread.\par
+- boolean isInterrupted() : \par
+Renvoyer un bool\'e9en qui pr\'e9cise si le thread est interrompu.\par
+- long getId() :\par
+Renvoyer un entier long dont la valeur est l'identifiant du thread.\par
+- int getPriority() : \par
+Renvoyer la priorit\'e9 du thread\par
+- ClassLoader getContextClassLoader() : \par
+Renvoyer le context classloader du thread .\par
+- StackTraceElement[] getStackTrace()  : \par
+Renvoyer un tableau des \'e9l\'e9ments qui composent la stacktrace d'ex\'e9cution du thread.\par
+- boolean isDaemon()  :\par
+Renvoyer un bool\'e9en qui pr\'e9cise si le thread est un d\'e9mon\par
+\cf1\ul Les operations sur les threads\cf0\ulnone\par
+Il est possible de r\'e9aliser plusieurs op\'e9rations sur un thread :\par
+ -  Mettre en sommeil le thread pour une certaine dur\'e9e (en millisecondes)\par
+   attendre la fin de l'ex\'e9cution d'un autre thread\par
+ - Mettre en pause le thread pour laisser aux autres threads plus de chance de     s'ex\'e9cuter\par
+ - Interrompre le thread.\par
+ - Modifier la priorit\'e9 d'ex\'e9cution du thread\par
+
+\pard\sl276\slmult1 sleep() :\par
+\par
+La m\'e9thode static sleep() de la classe Thread permet de mettre en sommeil le thread courant pour le d\'e9lai en millisecondes dont la valeur est fournie en param\'e8tre.Elle est bloquante, elle l\'e8ve une exception de type InterruptedException au cours de son ex\'e9cution si un autre thread demande l'interruption de l'ex\'e9cution du thread.\par
+
+\pard\sa200\sl276\slmult1 Contrairement \'e0 la m\'e9thode wait() de la classe Object, la m\'e9thode sleep() ne lib\'e8re pas les verrous qui sont pos\'e9s par le thread.\par
+join() :\par
+
+\pard\sl276\slmult1 La m\'e9thode join() de la classe Thread permet d'attendre la fin de l'ex\'e9cution du thread. Elle peut lever une exception de type InterruptedException.\par
+
+\pard\sa200\sl276\slmult1 Une surcharge de la m\'e9thode join() attend en param\'e8tre un entier long qui d\'e9finit la valeur en millisecondes d'un d\'e9lai d'attente maximum.\par
+yield() :\par
+
+\pard\sl276\slmult1 La m\'e9thode static yield() de la classe Thread tente de mettre en pause le thread courant pour laisser une chance aux autres threads de s'ex\'e9cuter.\par
+
+\pard\sa200\sl276\slmult1 Attention : il n'y a aucune garantie sur le r\'e9sultat de l'invocation de la m\'e9thode yield() car elle est d\'e9pendante de l'impl\'e9mentation de la JVM.\par
+L'obtention d'un verrou sur un moniteur en utilisant le mot cl\'e9 synchronized ne peut pas \'eatre interrompue bien qu'\'e9tant bloquante.\par
+\cf1\ul Les messages de synchronisation entre threads\cf0\ulnone\par
+La classe Object contient les m\'e9thodes wait(), notify() et notifyAll() pour permettre de synchroniser des threads gr\'e2ce \'e0 l'envoi de messages. Ces m\'e9thodes permettent la mise en oeuvre d'un m\'e9canisme de communication par \'e9changes de messages visant \'e0 synchroniser l'ex\'e9cution de threads.\par
+- La m\'e9thode wait() :\par
+Elle met le thread courant en attente jusqu'\'e0 ce que l'objet re\'e7oive une notification par les m\'e9thodes notify() ou notifyAll() : cette attente peut donc \'eatre potentiellement infinie.\par
+La m\'e9thode wait() poss\'e8de deux surcharges :\par
+
+\pard\sl276\slmult1 wait(long timeout) : attend au plus la dur\'e9e en millisecondes fournie en param\'e8tre\par
+
+\pard\sa200\sl276\slmult1 wait(long timeout, int nanos) : attend au plus la dur\'e9e en millisecondes cumul\'e9e avec celle en nanosecondes fournies en param\'e8tres\par
+- La m\'e9thode notifyAll() : \par
+Elle  avertit tous les threads dont les m\'e9thodes wait() de la m\'eame instance sont invoqu\'e9es.\par
+- La m\'e9thode notify() :\par
+Elle avertit un des threads dont la m\'e9thode wait() de la m\'eame instance est invoqu\'e9e.\par
+
+\pard\sl276\slmult1 Rq : Il est important que les m\'e9thodes wait() et notifyAll() ne soient invoqu\'e9es que par le thread qui poss\'e8de le verrou sur le moniteur de l'instance.\par
+
+\pard\sa200\sl276\slmult1 Un cas classique d'utilisation de la synchronisation de threads est la mise en oeuvre du mod\'e8le de conception producer/consumer.\par
+\cf1\ul Les piles\cf0\ulnone\par
+\cf1\ul Les threads et la m\'e9moire\cf0\ulnone\par
+\par
+\par
+\par
+\par
+}
+ 

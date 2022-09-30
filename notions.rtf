@@ -1,0 +1,99 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Calibri;}{\f2\fnil\fcharset238 Calibri;}}
+{\colortbl ;\red0\green77\blue187;\red0\green0\blue255;\red0\green0\blue0;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\b\f0\fs22\lang12 web strories \par
+AMP:accelerated mobile page\par
+NewsML\par
+Systeme de redactions\par
+Libg2\par
+\cf1\ul\fs24 1- web strories \fs22\par
+\cf0\ulnone Le format standard d\rquote une web story est un format mobile portrait, mais il est tout \'e0 fait possible de cr\'e9er une version desktop d\rquote une web story.\par
+Dans une web story on peut retrouver des \'e9l\'e9ments de plusieurs natures :\par
+Du texte   , Des images  , Des vid\'e9os , Des gifs , Des quiz , Des liens.\par
+C\rquote est une page web \'e0 part enti\'e8re qui peut contenir tout type de contenu .\par
+Elles sont g\'e9n\'e9ralement constitu\'e9es d\rquote une douzaine de pages et doivent se suffire \'e0 elles-m\'eames.\par
+Ce format est tr\'e8s efficace pour diffuser du contenu, c\rquote est court, c\rquote est anim\'e9, c\rquote est visuel et c\rquote est adapt\'e9 \'e0 une consommation sur mobile (70% du trafic web en 2020).\par
+Les web stories n\rquote ont pas une dur\'e9e de vie limit\'e9e .\par
+\cf1\ul\fs24 2- AMP:accelerated mobile page\fs22\par
+{\cf0\ulnone{\field{\*\fldinst{HYPERLINK https://www.salesodyssey.fr/stories/3-leviers-marketing-digital-efficaces-0T8EyKN/?t=091 }}{\fldrslt{https://www.salesodyssey.fr/stories/3-leviers-marketing-digital-efficaces-0T8EyKN/?t=091\ul0\cf0}}}}\cf0\ulnone\f0\fs22\par
+{{\field{\*\fldinst{HYPERLINK https://amp.dev/documentation/guides-and-tutorials/integrate/embed-stories-nonamp/?format=websites }}{\fldrslt{https://amp.dev/documentation/guides-and-tutorials/integrate/embed-stories-nonamp/?format=websites\ul0\cf0}}}}\f0\fs22\par
+L\rquote AMP est une technologie open source soutenue par Google. Elle permet de diminuer le temps de chargement des pages web. D\'e9ploy\'e9e en 2016, elle a pour objectif de faciliter l\rquote exp\'e9rience utilisateur lorsqu\rquote ils lisent des articles de presse sur leur mobile.\par
+Concr\'e8tement, l\rquote AMP est une version plus light d\rquote une page web, qui est h\'e9berg\'e9e directement sur les serveurs de Google. La technologie permet donc aux mobinautes d\rquote acc\'e9der \'e0 l\rquote article plus facilement.\par
+A pr\'e9sent, Google s\rquote appuie sur cette technologie pour la d\'e9ployer \'e0 d\rquote autres services.\par
+Amp est bas\'e9 sur Html, Css et Javascript comme tout site web. La diff\'e9rence est que AMP n'autorise pas le javascript personnalis\'e9. Il n'autorise qu'un ensemble de modules javascript pr\'e9-construits, qui contr\'f4lent la mise en page et peuvent alors assurer les meilleures performances.\par
+\cf1\ul\fs24 3- RestTemplate\cf0\ulnone\fs22\par
+Depuis longtemps, Spring propose RestTemplate en tant qu'abstraction de client Web RestTemplate utilise l'API Java Servlet, qui est bas\'e9e sur le mod\'e8le thread-per-request.\par
+Cela signifie que le thread se bloquera jusqu'\'e0 ce que le client Web re\'e7oive la r\'e9ponse. Le probl\'e8me avec le code de blocage est d\'fb au fait que chaque thread consomme une certaine quantit\'e9 de m\'e9moire et de cycles CPU.\par
+si nous d\'e9veloppons de nouvelles applications ou migrons une ancienne, c'est une bonne id\'e9e d'utiliser WebClient. \'c0 l'avenir, RestTemplate sera obsol\'e8te dans les futures versions.\par
+WebClient est un client HTTP moderne et alternatif \'e0 RestTemplate. Non seulement il fournit une API synchrone traditionnelle, mais il prend \'e9galement en charge une approche non bloquante et asynchrone efficace.\par
+\cf1\ul 4- Proxy config\cf0\ulnone\b0\par
+\b En tant que tel, lorsque vous ex\'e9cutez npm start, ng serve sera invoqu\'e9, ce qui est une commande \'e0 la CLI pour lancer son serveur de d\'e9veloppement interne.\par
+Ce serveur est bas\'e9 sur le serveur de d\'e9veloppement Webpack (du moins pour le moment). Vous pouvez ensuite vous rendre sur {{\field{\*\fldinst{HYPERLINK http://localhost:4200 }}{\fldrslt{http://localhost:4200\ul0\cf0}}}}\f0\fs22  sur votre navigateur Web et voir votre application en cours d'ex\'e9cution qui est servie directement \'e0 partir du syst\'e8me de fichiers.\par
+Dans les coulisses, il se passe beaucoup plus de choses (dans la configuration angulaire standard). Le serveur de d\'e9veloppement Webpack est configur\'e9 pour effectuer automatiquement la compilation TypeScript, compiler \'e9ventuellement SASS en CSS et servir les actifs,\par
+le tout en m\'e9moire sans toucher au syst\'e8me de fichiers (pour des raisons de perf). Il arrive \'e9galement que le navigateur soit automatiquement actualis\'e9 chaque fois que quelque chose change dans votre syst\'e8me de fichiers.\par
+Les choses deviennent un peu plus int\'e9ressantes dans une configuration du monde plus r\'e9el o\'f9 votre serveur de d\'e9veloppement CLI angulaire s'ex\'e9cute sur {{\field{\*\fldinst{HYPERLINK http://localhost:4200 }}{\fldrslt{http://localhost:4200\ul0\cf0}}}}\f0\fs22  et votre API backend (dans la technologie que vous pr\'e9f\'e9rez) s'ex\'e9cute sur un autre port ou m\'eame h\'f4te, disons dites {{\field{\*\fldinst{HYPERLINK http://localhost:3000 }}{\fldrslt{http://localhost:3000\ul0\cf0}}}}\f0\fs22  (cela pourrait aussi \'eatre {{\field{\*\fldinst{HYPERLINK http://dev-123.mycompany.com }}{\fldrslt{http://dev-123.mycompany.com\ul0\cf0}}}}\f0\fs22  ou autre chose ofc).\par
+\'c9videmment, l'URL de base (c'est-\'e0-dire l'h\'f4te) peut \'eatre configur\'e9e quelque part dans un endroit central, par exemple via le fichier environment.ts (qui est g\'e9n\'e9r\'e9 par la CLI angulaire). Mais il y a aussi un autre probl\'e8me. \'c0 moins que vous ne cr\'e9iez une API consommable publiquement et que vous injectiez les en-t\'eates CORS requis, vous obtiendrez tr\'e8s probablement des exceptions CORS.\par
+ajouter les en-t\'eates CORS appropri\'e9s - C'est d\'e9finitivement un must au cas o\'f9 vous concevez une API g\'e9n\'e9rique o\'f9 vous ne connaissez m\'eame pas le consommateur.\par
+utiliser un proxy - Un proxy est un logiciel qui se situe entre votre application JavaScript/Angular effectuant la requ\'eate Ajax et votre API backend. C'est le choix \'e0 faire dans une appli classique.\par
+Nous allons examiner de plus pr\'e8s la 2\'e8me approche ici. Ce que fait le proxy dev-server est simplement de prendre la demande du navigateur sur le m\'eame domaine + port o\'f9 votre application frontale s'ex\'e9cute, puis de transmettre cette demande \'e0 votre serveur d'API backend. CORS est un probl\'e8me de s\'e9curit\'e9 du navigateur et ne s'applique pas lors d'une communication "backend \'e0 backend", comme c'est le cas avec un proxy entre les deux.\par
+Voyons maintenant comment configurer notre proxy dev-server. La CLI angulaire utilise Webpack en dessous. En cons\'e9quence, le serveur de d\'e9veloppement dont nous avons parl\'e9 jusqu'\'e0 pr\'e9sent n'est rien d'autre que le serveur de d\'e9veloppement Webpack. Ainsi, les m\'eames param\'e8tres de configuration s'appliquent, qui sont tr\'e8s bien d\'e9crits dans la documentation officielle de Webpack.\par
+Toutes les demandes faites \'e0 /api/... depuis notre application seront transmises \'e0\par
+\cf1\ul\i\fs24 5- try-with-resources \cf0\ulnone\b0\i0\fs22\par
+\b L'instruction try-with-resources est une instruction try qui d\'e9clare une ou plusieurs ressources. Une ressource est un objet qui doit \'eatre ferm\'e9 une fois que le programme en a termin\'e9 avec lui. L'instruction try-with-resources garantit que chaque ressource est ferm\'e9e \'e0 la fin de l'instruction. Tout objet qui impl\'e9mente java.lang.AutoCloseable, qui inclut tous les objets qui impl\'e9mentent java.io.Closeable, peut \'eatre utilis\'e9 comme ressource.\par
+L'exemple suivant lit la premi\'e8re ligne d'un fichier. Il utilise une instance de FileReader et BufferedReader pour lire les donn\'e9es du fichier. FileReader et BufferedReader sont des ressources qui doivent \'eatre ferm\'e9es une fois que le programme en a termin\'e9\~:\par
+Dans cet exemple, les ressources d\'e9clar\'e9es dans l'instruction try-with-resources sont un FileReader et un BufferedReader. Les instructions de d\'e9claration de ces ressources apparaissent entre parenth\'e8ses imm\'e9diatement apr\'e8s le mot cl\'e9 try. Les classes FileReader et BufferedReader, dans Java SE 7 et versions ult\'e9rieures, impl\'e9mentent l'interface java.lang.AutoCloseable. \'c9tant donn\'e9 que les instances FileReader et BufferedReader sont d\'e9clar\'e9es dans une instruction try-with-resource, elles seront ferm\'e9es, que l'instruction try se termine normalement ou brusquement (\'e0 la suite de la m\'e9thode BufferedReader.readLine qui l\'e8ve une IOException).\par
+Avant Java SE 7, vous pouvez utiliser un bloc finally pour vous assurer qu'une ressource est ferm\'e9e, que l'instruction try se termine normalement ou brusquement. L'exemple suivant utilise un bloc finally au lieu d'une instruction try-with-resources\~:\par
+Cependant, cet exemple peut avoir une fuite de ressources. Un programme doit faire plus que compter sur le ramasse-miettes (GC) pour r\'e9cup\'e9rer la m\'e9moire d'une ressource lorsqu'il en a fini avec elle. Le programme doit \'e9galement lib\'e9rer la ressource vers le syst\'e8me d'exploitation, g\'e9n\'e9ralement en appelant la m\'e9thode close de la ressource. Cependant, si un programme ne parvient pas \'e0 le faire avant que le GC ne r\'e9cup\'e8re la ressource, les informations n\'e9cessaires pour lib\'e9rer la ressource sont perdues. La ressource, qui est toujours consid\'e9r\'e9e par le syst\'e8me d'exploitation comme \'e9tant en cours d'utilisation, a fui.\par
+Dans cet exemple, si la m\'e9thode readLine l\'e8ve une exception et que l'instruction br.close() dans le bloc finally l\'e8ve une exception, alors le FileReader a fui. Par cons\'e9quent, utilisez une instruction try-with-resources au lieu d'un bloc finally pour fermer les ressources de votre programme.\par
+Si les m\'e9thodes readLine et close l\'e8vent toutes les deux des exceptions, alors la m\'e9thode readFirstLineFromFileWithFinallyBlock l\'e8ve l'exception lev\'e9e depuis le bloc finally ; l'exception lev\'e9e depuis le bloc try est supprim\'e9e. En revanche, dans l'exemple readFirstLineFromFile, si des exceptions sont lev\'e9es \'e0 la fois depuis le bloc try et l'instruction try-with-resources, la m\'e9thode readFirstLineFromFile l\'e8ve l'exception lev\'e9e depuis le bloc try ; l'exception lev\'e9e depuis le bloc try-with-resources est supprim\'e9e. Dans Java SE 7 et versions ult\'e9rieures, vous pouvez r\'e9cup\'e9rer les exceptions supprim\'e9es ; voir la section Exceptions supprim\'e9es pour plus d'informations.\par
+L'exemple suivant r\'e9cup\'e8re les noms des fichiers empaquet\'e9s dans le fichier zip zipFileName et cr\'e9e un fichier texte qui contient les noms de ces fichiers\~:\par
+Dans cet exemple, l'instruction try-with-resources contient deux d\'e9clarations s\'e9par\'e9es par un point-virgule\~: ZipFile et BufferedWriter. Lorsque le bloc de code qui le suit directement se termine, soit normalement, soit \'e0 cause d'une exception, les m\'e9thodes de fermeture des objets BufferedWriter et ZipFile sont automatiquement appel\'e9es dans cet ordre. Notez que les m\'e9thodes proches des ressources sont appel\'e9es dans l'ordre inverse de leur cr\'e9ation.\par
+L'exemple suivant utilise une instruction try-with-resources pour fermer automatiquement un objet java.sql.Statement\~:\par
+\cf1\ul 6- Temporary files\par
+\cf0\ulnone Les fichiers temporaires sont cr\'e9\'e9s par le syst\'e8me d\rquote exploitation de votre ordinateur pour g\'e9rer les modifications utilisateur n\'e9cessaires lorsque vous effectuez une t\'e2che. Ils permettent la cr\'e9ation d\rquote espace m\'e9moire suppl\'e9mentaire pour les fichiers ouverts et en cours de modification.\par
+Ces fichiers temporaires sont sens\'e9s se supprimer automatiquement de la m\'e9moire lorsque le fichier d\rquote origine est ferm\'e9. La raison ? Ils ne sont plus utiles.  Mais il arrive que des fichiers temporaires ne s\rquote effacent pas automatiquement.  Ils prennent alors de l\rquote espace sur votre disque-dur, ce qui peut le ralentir sa performance.\par
+\cf1\ul\fs24\lang1036 7-zip\cf3\ulnone\b0\fs20\lang12\par
+\b Les fichiers individuels \'e9galement appel\'e9s "archives" sont appel\'e9s fichiers zip parce qu'ils contiennent un ou plusieurs fichiers compress\'e9s. Ils permettent de conserver facilement les informations de mani\'e8re organis\'e9e, ce qui facilite le transport, le t\'e9l\'e9chargement, le partage et le stockage des donn\'e9es. Les fichiers zip rendent tous les processus plus rapides et efficaces, ce qui en fait le format le plus populaire utilis\'e9 pour la compression des fichiers dans les windows, et l'utilitaire de compression le plus populaire est WinZip.\b0\par
+\cf0\fs22 8-\par
+NullPointerException, il est lev\'e9 lorsqu'une application tente:\par
+- d'Appeler une m\'e9thode d'instance d'un objet nul\par
+- Acc\'e9der ou modifier un champ d'un objet nul\par
+- Chercher la longueur d'un tableau null \par
+Dans le monde r\'e9el, les programmeurs ont du mal \'e0 identifier quels objets peuvent \'eatre nuls. Une strat\'e9gie agressivement s\'fbre pourrait \'eatre de v\'e9rifier null pour chaque objet. Cependant, cela entra\'eene de nombreuses v\'e9rifications nulles redondantes et rend notre code moins lisible.\par
+\cf1\ul\b\fs24 8- Angular Router Configuration - Apache Http Server\cf0\ulnone\b0\fs22\par
+\b\fs24  -\f1 HashLocationStrategy\f0\fs22\par
+\f1 Pour activer HashLocationStrategy dans Angular, On passe \{useHash\~: true\} \par
+\~ ==> RouterModule.forRoot(routes, \{useHash\~: true\})\par
+Tout ce qui d\'e9passe le # dans une URL n'est jamais envoy\'e9 au serveur.\par
+La partie # de l'URL est appel\'e9e le fragment de hachage.\par
+L'URL peut contenir des donn\'e9es pr\'e9c\'e9d\'e9es d'un caract\'e8re #.\par
+Si l'URL est :  {{\field{\*\fldinst{HYPERLINK https://codecraft.tv/contact/#/foo/moo/loo }}{\fldrslt{https://codecraft.tv/contact/#/foo/moo/loo\ul0\cf0}}}}\f1\fs22 , le navigateur envoie une requ\'eate GET \'e0 {{\field{\*\fldinst{HYPERLINK https://codecraft.tv/contact/ }}{\fldrslt{https://codecraft.tv/contact/\ul0\cf0}}}}\f1\fs22  uniquement.La partie #/foo/moo/loo de l'URL n'est jamais envoy\'e9e.\par
+Le fragment de hachage, puisqu'il n'est jamais envoy\'e9 au serveur, sert \'e0 stocker l'\'e9tat de l'application cliente:\par
+ - C'est donc une solution id\'e9ale pour mettre en \f2\u339?uvre le routage c\f1\'f4t\'e9 client\~: \par
+ - il fait partie de l'URL et peut donc \'eatre mis en signet et envoy\'e9 \'e0 d'autres personnes.\par
+ - ne pas confondre le c\'f4t\'e9 serveur puisque le fragment de hachage n'est jamais envoy\'e9 au      serveur.\par
+ - Il peut \'eatre modifi\'e9 par programmation via JavaScript.\par
+\b0\f0\par
+  - \b PathLocationStrategy\b0\par
+Le navigateur n'envoie pas la requ\'eate au serveur, le routage est donc g\'e9r\'e9 c\'f4t\'e9 client.\par
+Malheureusement, il a un gros inconv\'e9nient : si nous rechargeons la page, ou la mettons en signet et l'ouvrons plus tard, le navigateur fera une demande au serveur pour,\par
+Avec PathLocationStrategy, le serveur doit prend en charge cette fonctionnalit\'e9,ce qui n\'e9cessite de la coop\'e9ration.\par
+Lors de l'utilisation de PathLocationStrategy, il faut indiquer au navigateur ce qui sera pr\'e9fix\'e9 au chemin demand\'e9 pour g\'e9n\'e9rer l'URL.pour cela on specifie un href de base, dans la section head de notre code HTML comme suit\~:\par
+<base href='/my/app'/>\par
+\cf1\ul\b 9- Http satus 403 & 401\cf0\ulnone\b0\par
+\b    - 401 Unauthorized\par
+Le code de statut de r\'e9ponse HTTP 401 Unauthorized indique que la requ\'eate n'a pas \'e9t\'e9 effectu\'e9e, car il manque des informations d'authentification valides pour la ressource vis\'e9e.\par
+Ce statut est envoy\'e9 avec un en-t\'eate de r\'e9ponse WWW-Authenticate qui d\'e9crit la m\'e9thode pour s'authentifier correctement.\par
+Ce statut est similaire \'e0 403 mais, dans ce cas, une authentification est possible pour acc\'e9der \'e0 la ressource.\par
+  - 403 Forbidden\par
+Le code de statut d'erreur de r\'e9ponse HTTP 403 Forbidden indique qu'un serveur comprend la requ\'eate mais refuse de l'autoriser.\par
+Ce statut est similaire au statut 401, mais dans ce cas, la r\'e9-authentification ne changera rien. L'acc\'e8s est d\'e9finitivement interdit et est li\'e9 \'e0 la logique de l'application, par exemple manque d'une permission d'acc\'e8s \'e0 une ressource.\par
+\b0\par
+\par
+\par
+\par
+\par
+\par
+\par
+}
+ 
